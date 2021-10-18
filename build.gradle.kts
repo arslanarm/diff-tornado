@@ -19,7 +19,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.example.MainKt"
+    mainClassName = "me.plony.MainKt"
 }
 
 dependencies {
