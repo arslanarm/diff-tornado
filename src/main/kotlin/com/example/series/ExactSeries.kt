@@ -1,6 +1,5 @@
 package com.example.series
 
-import com.example.differentialEquations.solutions.GeneralSolution
 import com.example.differentialEquations.utils.Point
 import com.example.implementation.GeneralSolutionImpl
 import javafx.beans.property.ReadOnlyProperty
@@ -11,7 +10,7 @@ class ExactSeries(
     minXProperty: ReadOnlyProperty<Double>,
     maxXProperty: ReadOnlyProperty<Double>,
     NProperty: ReadOnlyProperty<Int>
-) : Series(
+) : XSeries(
     0,
     name = "Exact",
     fProperty = nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {

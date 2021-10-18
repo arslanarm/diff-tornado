@@ -12,7 +12,7 @@ class LocalTruncatedError<R: Method, T: Error<R>>(
     minXProperty: ReadOnlyProperty<Double>,
     maxXProperty: ReadOnlyProperty<Double>,
     NProperty: ReadOnlyProperty<Int>
-) : Series(
+) : XSeries(
     order, name,
     nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {
         val error = errorProvider()

@@ -12,7 +12,7 @@ class RungeKuttaSeries(
     minXProperty: ReadOnlyProperty<Double>,
     maxXProperty: ReadOnlyProperty<Double>,
     NProperty: ReadOnlyProperty<Int>
-)  : Series(
+)  : XSeries(
     3,
     "Runge Kutta",
     nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {

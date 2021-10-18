@@ -12,7 +12,7 @@ class EulerSeries(
     minXProperty: ReadOnlyProperty<Double>,
     maxXProperty: ReadOnlyProperty<Double>,
     NProperty: ReadOnlyProperty<Int>
-) : Series(
+) : XSeries(
     1,
     name = "Euler",
     fProperty = nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {
