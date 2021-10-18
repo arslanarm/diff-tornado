@@ -1,7 +1,7 @@
 package me.plony.differentialEquations.error
 
-import com.example.differentialEquations.methods.RungeKuttaMethod
-import com.example.differentialEquations.solutions.ParticularSolution
+import me.plony.differentialEquations.methods.RungeKuttaMethod
+import me.plony.differentialEquations.solutions.ParticularSolution
 
 class RungeKuttaError(
     method: RungeKuttaMethod,

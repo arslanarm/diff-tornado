@@ -1,7 +1,7 @@
 package me.plony.series
 
-import com.example.differentialEquations.utils.Point
-import com.example.implementation.GeneralSolutionImpl
+import me.plony.differentialEquations.utils.Point
+import me.plony.implementation.GeneralSolutionImpl
 import javafx.beans.property.ReadOnlyProperty
 import tornadofx.nonNullObjectBinding
 

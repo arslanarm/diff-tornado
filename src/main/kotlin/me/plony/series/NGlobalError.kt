@@ -10,7 +10,7 @@ import tornadofx.getValue
 import tornadofx.nonNullObjectBinding
 import tornadofx.observableListOf
 
-class NGlobalError<R: me.plony.differentialEquations.methods.Method, T: me.plony.differentialEquations.error.Error<R>>(
+class NGlobalError<R: Method, T: Error<R>>(
     errorProvider: (Int) -> T,
     override val order: Int,
     override val name: String,

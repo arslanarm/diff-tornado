@@ -1,7 +1,7 @@
 package me.plony
 
-import com.example.view.MainView
-import com.example.view.Plot
+import me.plony.view.MainView
+import me.plony.view.Plot
 import tornadofx.App
 
-class MyApp: App(MainView::class, me.plony.Styles::class)
+class MyApp: App(MainView::class, Styles::class)

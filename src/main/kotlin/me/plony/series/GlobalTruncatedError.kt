@@ -5,7 +5,7 @@ import me.plony.differentialEquations.methods.Method
 import javafx.beans.property.ReadOnlyProperty
 import tornadofx.nonNullObjectBinding
 
-class GlobalTruncatedError<R: me.plony.differentialEquations.methods.Method, T: me.plony.differentialEquations.error.Error<R>>(
+class GlobalTruncatedError<R: Method, T: Error<R>>(
     errorProvider: () -> T,
     order: Int, name: String,
     yProperty: ReadOnlyProperty<Double>,

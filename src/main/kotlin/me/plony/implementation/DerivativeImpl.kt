@@ -1,7 +1,7 @@
 package me.plony.implementation
 
-import com.example.differentialEquations.solutions.Derivative
-import com.example.differentialEquations.utils.Point
+import me.plony.differentialEquations.solutions.Derivative
+import me.plony.differentialEquations.utils.Point
 import kotlin.math.pow
 
 class DerivativeImpl : Derivative() {

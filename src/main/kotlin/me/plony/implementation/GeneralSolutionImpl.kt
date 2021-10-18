@@ -1,16 +1,16 @@
 package me.plony.implementation
 import me.plony.differentialEquations.abstractions.Differentiable
-import com.example.differentialEquations.solutions.Derivative
-import com.example.differentialEquations.solutions.GeneralSolution
-import com.example.differentialEquations.solutions.ParticularSolution
-import com.example.differentialEquations.utils.ComputedConstant
-import com.example.differentialEquations.utils.Constant
-import com.example.differentialEquations.utils.Point
-import com.example.differentialEquations.utils.UnknownConstant
+import me.plony.differentialEquations.solutions.Derivative
+import me.plony.differentialEquations.solutions.GeneralSolution
+import me.plony.differentialEquations.solutions.ParticularSolution
+import me.plony.differentialEquations.utils.ComputedConstant
+import me.plony.differentialEquations.utils.Constant
+import me.plony.differentialEquations.utils.Point
+import me.plony.differentialEquations.utils.UnknownConstant
 import kotlin.math.E
 import kotlin.math.pow
 
-class GeneralSolutionImpl : GeneralSolution(), me.plony.differentialEquations.abstractions.Differentiable {
+class GeneralSolutionImpl : GeneralSolution(), Differentiable {
     var c1: Constant = UnknownConstant
     override val constants: List<Constant> get() = listOf(c1)
 

@@ -1,16 +1,16 @@
 package me.plony.view
 
-import com.example.NumberStringConverter
+import me.plony.NumberStringConverter
 import me.plony.differentialEquations.error.EulerError
 import me.plony.differentialEquations.error.ImprovedEulerError
 import me.plony.differentialEquations.error.RungeKuttaError
 import me.plony.differentialEquations.methods.EulerMethod
 import me.plony.differentialEquations.methods.ImprovedEulerMethod
-import com.example.differentialEquations.methods.RungeKuttaMethod
-import com.example.differentialEquations.utils.Point
-import com.example.implementation.DerivativeImpl
-import com.example.implementation.GeneralSolutionImpl
-import com.example.series.*
+import me.plony.differentialEquations.methods.RungeKuttaMethod
+import me.plony.differentialEquations.utils.Point
+import me.plony.implementation.DerivativeImpl
+import me.plony.implementation.GeneralSolutionImpl
+import me.plony.series.*
 import javafx.scene.Parent
 import javafx.scene.control.ToggleGroup
 import tornadofx.*
@@ -43,7 +43,7 @@ class MainView : View("Title") {
     val rungeKuttaSeries = RungeKuttaSeries(generalSolution.derivative(), yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
     val eulerErrorProvider = {
         me.plony.differentialEquations.error.EulerError(
-            me.plony.differentialEquations.methods.EulerMethod(
+            EulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / N
@@ -52,8 +52,8 @@ class MainView : View("Title") {
         )
     }
     val improvedEulerErrorProvider = {
-        me.plony.differentialEquations.error.ImprovedEulerError(
-            me.plony.differentialEquations.methods.ImprovedEulerMethod(
+        ImprovedEulerError(
+            ImprovedEulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / N
@@ -73,7 +73,7 @@ class MainView : View("Title") {
     }
     val eulerNGlobalProvider = { it: Int ->
         me.plony.differentialEquations.error.EulerError(
-            me.plony.differentialEquations.methods.EulerMethod(
+            EulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
@@ -81,8 +81,8 @@ class MainView : View("Title") {
         )
     }
     val improvedEulerNGlobalProvider = { it: Int ->
-        me.plony.differentialEquations.error.ImprovedEulerError(
-            me.plony.differentialEquations.methods.ImprovedEulerMethod(
+        ImprovedEulerError(
+            ImprovedEulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it

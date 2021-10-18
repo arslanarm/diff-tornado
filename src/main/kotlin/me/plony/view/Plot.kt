@@ -1,7 +1,7 @@
 package me.plony.view
 
-import com.example.series.Series
-import com.example.series.XSeries
+import me.plony.series.Series
+import me.plony.series.XSeries
 import javafx.beans.value.ObservableValue
 import javafx.scene.chart.NumberAxis
 import javafx.scene.chart.XYChart

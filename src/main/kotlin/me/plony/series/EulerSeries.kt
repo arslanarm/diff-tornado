@@ -1,8 +1,8 @@
 package me.plony.series
 
 import me.plony.differentialEquations.methods.EulerMethod
-import com.example.differentialEquations.solutions.Derivative
-import com.example.differentialEquations.utils.Point
+import me.plony.differentialEquations.solutions.Derivative
+import me.plony.differentialEquations.utils.Point
 import javafx.beans.property.ReadOnlyProperty
 import tornadofx.nonNullObjectBinding
 

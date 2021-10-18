@@ -1,8 +1,8 @@
 package me.plony.implementation
 
-import com.example.differentialEquations.solutions.ParticularSolution
-import com.example.differentialEquations.utils.ComputedConstant
-import com.example.differentialEquations.utils.Point
+import me.plony.differentialEquations.solutions.ParticularSolution
+import me.plony.differentialEquations.utils.ComputedConstant
+import me.plony.differentialEquations.utils.Point
 import kotlin.math.E
 import kotlin.math.pow
 
