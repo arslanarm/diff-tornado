@@ -20,10 +20,9 @@ data class Graphs(
     val values: Series,
     val localError: Series?,
     val globalError: Series?,
-    val nGlobalError: Series?
 )
 
-class MainView : View("Title") {
+class MainView : View("Computational Practicum") {
     val xProperty = property(0.0)
     var x by xProperty
     val yProperty = property(1.0)
@@ -42,7 +41,7 @@ class MainView : View("Title") {
     val improvedEulerSeries = ImprovedEulerSeries(generalSolution.derivative(), yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
     val rungeKuttaSeries = RungeKuttaSeries(generalSolution.derivative(), yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
     val eulerErrorProvider = {
-        me.plony.differentialEquations.error.EulerError(
+        EulerError(
             EulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
@@ -62,7 +61,7 @@ class MainView : View("Title") {
         )
     }
     val rungeKuttaErrorProvider = {
-        me.plony.differentialEquations.error.RungeKuttaError(
+        RungeKuttaError(
             RungeKuttaMethod(
                 Point(x, y),
                 generalSolution.derivative(),
@@ -71,48 +70,47 @@ class MainView : View("Title") {
             GeneralSolutionImpl().particular(listOf(Point(x, y)))
         )
     }
-    val eulerNGlobalProvider = { it: Int ->
-        me.plony.differentialEquations.error.EulerError(
+    val eulerGlobalErrorProvider = { it: Int ->
+        EulerError(
             EulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
-            ), GeneralSolutionImpl().particular(listOf(Point(x, y)))
+            ),
+            GeneralSolutionImpl().particular(listOf(Point(x, y)))
         )
     }
-    val improvedEulerNGlobalProvider = { it: Int ->
+    val improvedEulerGlobalErrorProvider = { it: Int ->
         ImprovedEulerError(
             ImprovedEulerMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
-            ), GeneralSolutionImpl().particular(listOf(Point(x, y)))
+            ),
+            GeneralSolutionImpl().particular(listOf(Point(x, y)))
         )
     }
-    val rungeKuttaNGlobalProvider = { it: Int ->
-        me.plony.differentialEquations.error.RungeKuttaError(
+    val rungeKuttaGlobalErrorProvider = { it: Int ->
+        RungeKuttaError(
             RungeKuttaMethod(
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
-            ), GeneralSolutionImpl().particular(listOf(Point(x, y)))
+            ),
+            GeneralSolutionImpl().particular(listOf(Point(x, y)))
         )
     }
     val eulerLocalError = LocalTruncatedError(eulerErrorProvider, 0, "Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
     val improvedEulerLocalError = LocalTruncatedError(improvedEulerErrorProvider, 1, "Improved Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
     val rungeKuttaLocalError = LocalTruncatedError(rungeKuttaErrorProvider, 2, "Runge Kutta", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
-    val eulerGlobalError = GlobalTruncatedError(eulerErrorProvider, 3, "Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
-    val improvedEulerGlobalError = GlobalTruncatedError(improvedEulerErrorProvider, 4, "Improved Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
-    val rungeKuttaGlobalError = GlobalTruncatedError(rungeKuttaErrorProvider, 5, "Runge Kutta", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, NProperty.fxProperty)
-    val eulerNGlobalError = NGlobalError(eulerNGlobalProvider, 3, "Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
-    val improvedEulerNGlobalError = NGlobalError(improvedEulerNGlobalProvider, 4, "Improved Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
-    val rungeKuttaNGlobalError = NGlobalError(rungeKuttaNGlobalProvider, 5, "Runge Kutta", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
-
+    val eulerGlobalError = GlobalTruncatedError(eulerGlobalErrorProvider, 3, "Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
+    val improvedEulerGlobalError = GlobalTruncatedError(improvedEulerGlobalErrorProvider, 4, "Improved Euler", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
+    val rungeKuttaGlobalError = GlobalTruncatedError(rungeKuttaGlobalErrorProvider, 5, "Runge Kutta", yProperty.fxProperty, xProperty.fxProperty, maxXProperty.fxProperty, minNProperty.fxProperty, maxNProperty.fxProperty)
     val seriesMap = mapOf(
-        "exact" to Graphs(exactSeries, null, null, null) ,
-        "euler" to Graphs(eulerSeries, eulerLocalError, eulerGlobalError, eulerNGlobalError),
-        "improvedEuler" to Graphs(improvedEulerSeries, improvedEulerLocalError, improvedEulerGlobalError, improvedEulerNGlobalError),
-        "rungeKutta" to Graphs(rungeKuttaSeries, rungeKuttaLocalError, rungeKuttaGlobalError, rungeKuttaNGlobalError)
+        "exact" to Graphs(exactSeries, null, null) ,
+        "euler" to Graphs(eulerSeries, eulerLocalError, eulerGlobalError),
+        "improvedEuler" to Graphs(improvedEulerSeries, improvedEulerLocalError, improvedEulerGlobalError),
+        "rungeKutta" to Graphs(rungeKuttaSeries, rungeKuttaLocalError, rungeKuttaGlobalError)
     )
     val seriesProperty = property(seriesMap.values.toList())
     var series by seriesProperty
@@ -196,12 +194,8 @@ class MainView : View("Title") {
         val globalErrors = Plot("Global Errors", nonNullObjectBinding(seriesProperty.fxProperty) {
             value.mapNotNull { it.globalError }.sortedBy { it.order }
         })
-        val nGlobalErrors = Plot("Global Error Relative to N", nonNullObjectBinding(seriesProperty.fxProperty) {
-            value.mapNotNull { it.nGlobalError }.sortedBy { it.order }
-        })
         add(plot)
         add(localErrors)
         add(globalErrors)
-        add(nGlobalErrors)
     }
 }

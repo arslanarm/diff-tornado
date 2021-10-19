@@ -6,7 +6,7 @@ import me.plony.differentialEquations.solutions.ParticularSolution
 class RungeKuttaError(
     method: RungeKuttaMethod,
     particularSolution: ParticularSolution
-) : me.plony.differentialEquations.error.Error<RungeKuttaMethod>(
+) : Error<RungeKuttaMethod>(
     method,
     particularSolution
 )

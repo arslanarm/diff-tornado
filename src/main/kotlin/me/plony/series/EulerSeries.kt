@@ -16,7 +16,7 @@ class EulerSeries(
     1,
     name = "Euler",
     fProperty = nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {
-        val method = me.plony.differentialEquations.methods.EulerMethod(
+        val method = EulerMethod(
             initial = Point(minXProperty.value, yProperty.value),
             derivative = derivative,
             step = (maxXProperty.value - minXProperty.value) / NProperty.value

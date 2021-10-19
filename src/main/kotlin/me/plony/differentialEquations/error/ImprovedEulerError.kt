@@ -6,7 +6,7 @@ import me.plony.differentialEquations.solutions.ParticularSolution
 class ImprovedEulerError(
     method: ImprovedEulerMethod,
     particularSolution: ParticularSolution
-) : me.plony.differentialEquations.error.Error<ImprovedEulerMethod>(
+) : Error<ImprovedEulerMethod>(
     method,
     particularSolution
 )

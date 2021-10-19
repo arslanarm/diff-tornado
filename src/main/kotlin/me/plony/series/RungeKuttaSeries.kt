@@ -1,8 +1,8 @@
 package me.plony.series
 
-import com.example.differentialEquations.methods.RungeKuttaMethod
-import com.example.differentialEquations.solutions.Derivative
-import com.example.differentialEquations.utils.Point
+import me.plony.differentialEquations.methods.RungeKuttaMethod
+import me.plony.differentialEquations.solutions.Derivative
+import me.plony.differentialEquations.utils.Point
 import javafx.beans.property.ReadOnlyProperty
 import tornadofx.nonNullObjectBinding
 

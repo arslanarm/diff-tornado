@@ -7,7 +7,7 @@ import kotlin.math.abs
 class EulerError(
     method: EulerMethod,
     particularSolution: ParticularSolution
-) : me.plony.differentialEquations.error.Error<EulerMethod>(
+) : Error<EulerMethod>(
     method,
     particularSolution
 )
