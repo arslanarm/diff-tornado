@@ -4,6 +4,8 @@ import me.plony.differentialEquations.methods.EulerMethod
 import me.plony.differentialEquations.solutions.Derivative
 import me.plony.differentialEquations.utils.Point
 import javafx.beans.property.ReadOnlyProperty
+import me.plony.differentialEquations.solutions.ParticularSolution
+import me.plony.implementation.GeneralSolutionImpl
 import tornadofx.nonNullObjectBinding
 
 class EulerSeries(
@@ -17,6 +19,7 @@ class EulerSeries(
     name = "Euler",
     fProperty = nonNullObjectBinding(minXProperty, yProperty, maxXProperty, NProperty) {
         val method = EulerMethod(
+            GeneralSolutionImpl().particular(listOf(Point(minXProperty.value, yProperty.value))),
             initial = Point(minXProperty.value, yProperty.value),
             derivative = derivative,
             step = (maxXProperty.value - minXProperty.value) / NProperty.value

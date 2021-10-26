@@ -8,11 +8,9 @@ import me.plony.differentialEquations.methods.EulerMethod
 import me.plony.differentialEquations.methods.ImprovedEulerMethod
 import me.plony.differentialEquations.methods.RungeKuttaMethod
 import me.plony.differentialEquations.utils.Point
-import me.plony.implementation.DerivativeImpl
 import me.plony.implementation.GeneralSolutionImpl
 import me.plony.series.*
 import javafx.scene.Parent
-import javafx.scene.control.ToggleGroup
 import tornadofx.*
 import kotlin.math.ceil
 
@@ -43,6 +41,7 @@ class MainView : View("Computational Practicum") {
     val eulerErrorProvider = {
         EulerError(
             EulerMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / N
@@ -53,6 +52,7 @@ class MainView : View("Computational Practicum") {
     val improvedEulerErrorProvider = {
         ImprovedEulerError(
             ImprovedEulerMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / N
@@ -63,6 +63,7 @@ class MainView : View("Computational Practicum") {
     val rungeKuttaErrorProvider = {
         RungeKuttaError(
             RungeKuttaMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / N
@@ -73,6 +74,7 @@ class MainView : View("Computational Practicum") {
     val eulerGlobalErrorProvider = { it: Int ->
         EulerError(
             EulerMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
@@ -83,6 +85,7 @@ class MainView : View("Computational Practicum") {
     val improvedEulerGlobalErrorProvider = { it: Int ->
         ImprovedEulerError(
             ImprovedEulerMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
@@ -93,6 +96,7 @@ class MainView : View("Computational Practicum") {
     val rungeKuttaGlobalErrorProvider = { it: Int ->
         RungeKuttaError(
             RungeKuttaMethod(
+                generalSolution.particular(listOf(Point(x, y))),
                 Point(x, y),
                 generalSolution.derivative(),
                 (maxX - x) / it
